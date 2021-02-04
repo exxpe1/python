@@ -25,7 +25,7 @@ SECRET_KEY = '4elxv-p(wmt-vr!sa27oxho@)-l5056%j&z&!l3l4_f=d8zqb^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['exxpe1.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
@@ -119,3 +119,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/exxpe1/python/static'

@@ -111,7 +111,11 @@ class Product(models.Model):
         on_delete=models.PROTECT,
         blank=True,
         null=True)
-
+    price = models.DecimalField(
+        max_digits=10, 
+        decimal_places=2,
+        verbose_name ='Цена',
+        null=True)
     created = models.DateTimeField(
         verbose_name ='Создано',
         auto_now=False)

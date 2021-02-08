@@ -4,9 +4,11 @@ from .models import Product
 
 # Create your views here.
 def index(request):
-    products = Product.objects.all()
+    products = Product.objects.all()[:1]
     context = {'products' : products}
     return render(request, 'proj/index.html', context)
 
 def shop(request):
-    return render(request, 'proj/shop.html')
+    products = Product.objects.all()
+    context = {'products' : products}
+    return render(request, 'proj/shop.html', context)

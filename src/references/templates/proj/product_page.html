@@ -1,0 +1,25 @@
+{% extends 'proj/base.html'%}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+
+{% block content %}
+    {% if products %}
+        {% for el in products %}
+            <div class ='alert alert-warning mt-2'>
+                <h3>{{ el.name_product }}</h3>
+                <p>{{ el.serie }}</p>
+                {% for elem in el.genre.all %}
+                <p>{{ elem }}</p>
+                {% endfor %}
+                {% for elem in el.author.all %}
+                {{ elem }}
+                {% endfor %}  
+            </div>
+        {% endfor %}   
+    {% else %}
+            <p>Нет товаров!</p>
+    {% endif %}
+{% endblock %} 

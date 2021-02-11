@@ -118,10 +118,12 @@ class Product(models.Model):
         null=True)
     created = models.DateTimeField(
         verbose_name ='Создано',
-        auto_now=False)
+        auto_now=False,
+        null=True)
     updated = models.DateTimeField(
         verbose_name ='Обновлено',
-        auto_now=True)
+        auto_now=True,
+        null=True)
     def __str__(self):
         return self.name_product
 

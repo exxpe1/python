@@ -1,4 +1,4 @@
-{% extends 'proj/base.html'%}
+{% extends 'base.html'%}
 
 {% block title %}
 Обновление
@@ -12,7 +12,7 @@
       <h1 class="display-5 font-weight-normal">Обновление книги</h1>
       <form action="" method="POST">
         {% csrf_token %}
-        <input type="text" name="name_product" required value="{{ product.name_product }}"><br>
+        {{ form.as_p }}
         <button>Изменить</button>
       </form>
     </div>

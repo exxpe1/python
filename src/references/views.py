@@ -21,7 +21,7 @@ def shop(request):
     context = {'products' : products}
     return render(request, 'references/shop.html', context)
 
-class ShopList(ListView):
+class ProductView(ListView):
     model=Product
     template_name_suffix='_list'
 

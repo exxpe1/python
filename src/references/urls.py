@@ -7,7 +7,7 @@ from account import urls as account_urls
 
 urlpatterns = [
     path('', views.IndexList.as_view(), name='home'),
-    path('catalog/', views.shop, name='catalog'),
+    path('catalog/', views.ProductView.as_view(), name='catalog'),
     #path('catalog/<int:pk>', views.product_page, name='product'),
     path('catalog/<int:pk>', views.ProductDetail.as_view(), name='product'),
     path('catalog-delete/<int:pk>', views.ProductDelete.as_view(), name='catalog-delete'),

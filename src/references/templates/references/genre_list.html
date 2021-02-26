@@ -1,7 +1,14 @@
+
+
+
+
+
+
+
 {% extends 'references/base.html'%}
 
 {% block title %}
-Каталог
+Авторы
 {% endblock %}
 
 {% block content %}
@@ -27,24 +34,26 @@
 
 
         <div class="row">
-          {% for el in products %}
+            
+          {% for el in object_list %}
+          
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
               {% if el.image.url %}
-                <a href="{% url 'product' el.pk %}"><img class="card-img-top" src="{{ el.image.url }}"></a>
+                <a href="{% url 'genre' el.pk %}"><img class="card-img-top" src="{{ el.image.url }}"></a>
               {% else %}
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <a href="{{el.id}}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               {% endif %}
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="{% url 'product' el.pk %}">{{ el.name_product }}</a>
+                  <a href="{{el.id}}">{{ el.name_genre }}</a>
                   
                 </h4>
                 
-                {% for elem in el.author.all %}
+                <!-- {% for elem in el.author.all %}
                 <p class="card-text">{{ elem }}</p>
-                {% endfor %} 
-                <h5>{{ el.price }} BYN</h5>
+                {% endfor %}  -->
+                <h5>{{ el.desc_author }} </h5>
                 <!--<h5>{{ el.created  }}</h5>-->
               </div>
               <!--<div class="card-footer">

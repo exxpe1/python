@@ -28,6 +28,12 @@ class Series(models.Model):
         verbose_name ='Серия',
         max_length=50)
 
+    desc_series = models.TextField(
+        verbose_name ='Краткая информация о серии',
+        max_length=50,
+        null=True,
+        blank=True)
+
     def __str__(self):
         return self.name_series
 
@@ -40,6 +46,12 @@ class Publisher(models.Model):
         verbose_name ='Издатель',
         max_length=50)
 
+    desc_publisher = models.TextField(
+        verbose_name ='Краткая информация об Издателе',
+        max_length=50,
+        null=True,
+        blank=True)
+
     def __str__(self):
         return self.name_publisher
     class Meta:
@@ -49,7 +61,11 @@ class Genre(models.Model):
     name_genre = models.CharField(
         verbose_name ='Жанр',
         max_length=50)
-
+    desc_genre = models.TextField(
+        verbose_name ='Краткая информация о Жанре',
+        max_length=50,
+        null=True,
+        blank=True)
     def __str__(self):
         return self.name_genre
 
@@ -124,6 +140,11 @@ class Product(models.Model):
         verbose_name ='Обновлено',
         auto_now=True,
         null=True)
+    image = models.ImageField(
+        null=True,
+        blank = True,
+        upload_to = 'image/'
+    )
     def __str__(self):
         return self.name_product
 

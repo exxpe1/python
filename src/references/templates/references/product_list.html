@@ -9,7 +9,7 @@
     {% if object_list %}
         {% for el in object_list %}
             <div class ='alert alert-warning mt-2'>
-                <h3><a href="{% url 'product-cbv' el.pk %}">{{ el.name_product }}</a></h3>
+                <h3><a href="{% url 'product' el.pk %}">{{ el.name_product }}</a></h3>
                 <p>{{ el.price }} BYN</p>
                 <p>{{ el.serie }}</p>
                 {% for elem in el.genre.all %}

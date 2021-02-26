@@ -12,6 +12,11 @@
       <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="{% url 'home' %}">Главная</a>
         <a class="p-2 text-dark" href="{% url 'catalog' %}">Каталог</a>
+        {% if user %}
+            <a class="p-2 text-dark" >{{ user }}</a>
+        {% else %}
+            <a class="p-2 text-dark" >Войти</a>
+        {% endif %}
     </div>
     <div class="container">{% block content %}{% endblock %}</div> 
 </body>

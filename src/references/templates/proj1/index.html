@@ -1,17 +1,19 @@
-{% extends 'base.html'%}
+{% extends 'references/base.html'%}
 
 {% block title %}
 Главная страница
 {% endblock %}
 
 
-{% block content %}
+{% block content %} 
     {% if products %}
         {% for el in products %}
             <div class ='alert alert-warning mt-2'>
-                <h3><a href="{% url 'product-cbv' el.pk %}">{{ el.name_product }}</a></h3>
-                <p>{{ el.price }} BYN</p>
+                <h3><a href="{% url 'product' el.pk %}">{{ el.name_product }}</a></h3>
+                <p>{{ el.price }} BdsYN</p>
                 <p>{{ el.serie }}</p>
+                test
+                <a><img class="card-img-top" src="{{el.image.url}" alt=""></a>
                 {% for elem in el.genre.all %}
                     <p>{{ elem }}</p>
                 {% endfor %}

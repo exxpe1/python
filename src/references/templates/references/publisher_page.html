@@ -14,15 +14,15 @@
       {% else %}
         <img class="card-img-top" src="http://placehold.it/700x400" alt="">
       {% endif %}
-      <h1 class="display-5 font-weight-normal">{{ object.name_product }}</h1>
-      <h2 class="display-5 font-weight-normal">{{ object.price }} BYN</h1><br>
+      <h1 class="display-5 font-weight-normal">{{ object.name_publisher }}</h1>
+      <h2 class="display-5 font-weight-normal">{{ object.desc_author }} </h1><br>
       {% for elem in object.author.all %}
       <p class="lead font-weight-normal">{{ elem }}</p>
       {% endfor %}
-      <a class="btn btn btn-secondary" href="{% url 'catalog' %}">Обратно в магазин</a><br><br>
-      <a class="btn btn btn-success" href="{% url 'product-create' %}">Добавить товар</a>
-      <a class="btn btn btn-primary" href="{% url 'product-update' object.pk %}">Обновить товар</a><br><br>
-      <a class="btn btn btn-danger" href="{% url 'catalog-delete' object.pk %}">Удалить</a>
+      <a class="btn btn btn-secondary" href="{% url 'publisher' %}">Обратно к Издательствам</a><br><br>
+      <a class="btn btn btn-success" href="{% url 'publisher-create' %}">Добавить Издательство</a>
+      <a class="btn btn btn-primary" href="{% url 'publisher-update' object.pk %}">Обновить Издательство</a><br><br>
+      <a class="btn btn btn-danger" href="{% url 'publisher-delete' object.pk %}">Удалить</a>
     </div>
     <div class="product-device box-shadow d-none d-md-block"></div>
     <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>

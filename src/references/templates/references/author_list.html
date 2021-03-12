@@ -1,43 +1,16 @@
-
-
-
-
-
-
-
-{% extends 'references/base.html'%}
+{% extends 'references/base_1.html'%}
 
 {% block title %}
 Авторы
 {% endblock %}
 
 {% block content %}
-<div class="container">
-
-    <div class="row">
-
-      <div class="col-lg-3">
-
-        <h1 class="my-4">Категории</h1>
-        <div class="list-group">
-            <a href="{% url 'catalog' %}" class="list-group-item">Книги</a>
-            <a href="{% url 'author' %}" class="list-group-item">Авторы</a>
-            <a href="{% url 'publisher' %}" class="list-group-item">Издательства</a>
-            <a href="{% url 'genre' %}" class="list-group-item">Жанры</a>
-            <a href="{% url 'series' %}" class="list-group-item">Серии</a>
-          </div>
-
-      </div>
-      <!-- /.col-lg-3 -->
-
-      <div class="col-lg-9">
-
 
         <div class="row">
             
           {% for el in object_list %}
           
-          <div class="col-lg-4 col-md-6 mb-4">
+          <div class="col-lg-4">
             <div class="card h-100">
               {% if el.image.url %}
                 <a href="{% url 'author' el.pk %}"><img class="card-img-top" src="{{ el.image.url }}"></a>
@@ -61,16 +34,34 @@
               </div>-->
             </div>
           </div>
+          
           {% endfor %}  
+        </br>
+        <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+          {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+          {% endif %}
+      
+          {% for i in paginator.page_range %}
+          {% if page_obj.number == i %}
+            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+          {% else %}
+            <li><a href="?page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+      
+        {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+      {% else %}
+        <li class="disabled"><span>&raquo;</span></li>
+      {% endif %}
+          
+      </ul>
+      
+
         </div>
-        <!-- /.row -->
 
-      </div>
-      <!-- /.col-lg-9 -->
-
-    </div>
-    <!-- /.row -->
-
-  </div>
   
 {% endblock %}

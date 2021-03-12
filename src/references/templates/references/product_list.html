@@ -5,26 +5,6 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-
-    <div class="row">
-
-      <div class="col-lg-3">
-
-        <h1 class="my-4">Категории</h1>
-        <div class="list-group">
-            <a href="{% url 'catalog' %}" class="list-group-item">Книги</a>
-            <a href="{% url 'author' %}" class="list-group-item">Авторы</a>
-            <a href="{% url 'publisher' %}" class="list-group-item">Издательства</a>
-            <a href="{% url 'genre' %}" class="list-group-item">Жанры</a>
-            <a href="{% url 'series' %}" class="list-group-item">Серии</a>
-          </div>
-
-      </div>
-      <!-- /.col-lg-3 -->
-
-      <div class="col-lg-9">
-
 
         <div class="row">
             
@@ -61,14 +41,10 @@
           </div>
           {% endfor %}  
         </div>
-        <!-- /.row -->
 
-      </div>
-      <!-- /.col-lg-9 -->
 
-    </div>
-    <!-- /.row -->
+        
 
-  </div>
-  
+
+
 {% endblock %}

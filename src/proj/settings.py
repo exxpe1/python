@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'references',
     'crispy_forms',
-    'account'
+    'accounts'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -133,3 +133,4 @@ STATICFILES_DIRS =(
     os.path.join(BASE_DIR, 'static'),
 )
 
+LOGIN_REDIRECT_URL = 'home'

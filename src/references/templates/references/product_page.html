@@ -7,25 +7,87 @@
 
 {% block content %}
 
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
+
+
+  <div class="row" >
+    <div class="col-md-4">
       {% if object.image.url %}
-        <img class="card-img-top" src="{{ object.image.url }}">
+        <img class="card-img-top" src="{{ object.image.url }}" >
       {% else %}
         <img class="card-img-top" src="http://placehold.it/700x400" alt="">
       {% endif %}
+    </div>
+    <div class="col-md-8" >
       <h1 class="display-5 font-weight-normal">{{ object.name_product }}</h1>
-      <h2 class="display-5 font-weight-normal">{{ object.price }} BYN</h1><br>
-      {% for elem in object.author.all %}
-      <p class="lead font-weight-normal">{{ elem }}</p>
-      {% endfor %}
+      <h1 class="display-5 font-weight-normal">{{ object.price }} BYN</h1><br>
+  </div>
+  <div class="row" >
       <a class="btn btn btn-secondary" href="{% url 'catalog' %}">Обратно в магазин</a><br><br>
       <a class="btn btn btn-success" href="{% url 'product-create' %}">Добавить товар</a>
       <a class="btn btn btn-primary" href="{% url 'product-update' object.pk %}">Обновить товар</a><br><br>
-      <a class="btn btn btn-danger" href="{% url 'catalog-delete' object.pk %}">Удалить</a>
-    </div>
-    <div class="product-device box-shadow d-none d-md-block"></div>
-    <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+      <a class="btn btn btn-danger" href="{% url 'catalog-delete' object.pk %}">Удалить</a></div>
+      <div id="tabs-information" class="col-md-12">
+        <div class="col-md-12 tabs-title">
+        <div class="col-md-12 tabs-content">
+          <div class="tab-content">
+            <table class="table table-striped table-product">
+            <tbody><tr>
+              <th>Автор</th>
+              <td>{% for elem in object.author.all %}
+                {{ elem }}</br>
+                {% endfor %}</td>
+            </tr>
+            <tr>
+              <th>Серия</th>
+              <td>{{ object.serie }}</td>
+            </tr>
+            <tr>
+              <th>Год издания</th>
+              <td>{{ object.year }}</td>
+            </tr>
+            <tr>
+              <th>Страниц</th>
+              <td>{{ object.pages }}</td>
+            </tr>
+            <tr>
+              <th>Переплёт</th>
+              <td>{{ object.cover }}</td>
+            </tr>
+            <tr>
+              <th>Формат</th>
+              <td>{{ object.format }}</td>
+            </tr>
+            <tr>
+              <th>ISBN</th>
+              <td>{{ object.isbn }}</td>
+            </tr>
+            <tr>
+              <th>Вес (гр)</th>
+              <td>{{ object.weight }}</td>
+            </tr>
+            <tr>
+              <th>Возрастные ограничения</th>
+              <td>{{ object.age_restrict }}</td>
+            </tr>
+            <tr>
+              <th>Издатель</th>
+              <td>{{ object.publisher }}</td>
+            </tr>
+            <tr>
+              <th>Дата внесения в каталог</th>
+              <td>{{ object.created }}</td>
+            </tr>
+            <tr>
+              <th>Дата последнего изменения</th>
+              <td>{{ object.updated }}</td>
+            </tr>
+            </tbody>
+            </table>                          
+          </div>
+        </div>
+      </div>
+
   </div>
-    <h1></h1>
+  
+
 {% endblock %} 

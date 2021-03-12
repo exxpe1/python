@@ -3,10 +3,10 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from account import urls as account_urls
+from accounts import urls as accounts_urls
 
 urlpatterns = [
-    path('', views.IndexList.as_view(), name='home'),
+    path('', views.HomePage.as_view(), name='home'),
     path('catalog/', views.ProductView.as_view(), name='catalog'),
     #path('catalog/<int:pk>', views.product_page, name='product'),
     path('catalog/<int:pk>', views.ProductDetail.as_view(), name='product'),
@@ -14,7 +14,8 @@ urlpatterns = [
     path('product-create/', views.ProductCreate.as_view(), name='product-create'),
     path('catalog-update/<int:pk>', views.ProductUpdate.as_view(), name='product-update'),
 
-    path('account/', include(account_urls)),
+    #path('accounts/', include(accounts_urls)),
+    #path('dashboard/', include(account_urls)),
 
     path('author/', views.AuthorView.as_view(), name='author'),
     path('author/<int:pk>', views.AuthorDetail.as_view(), name='author-page'),

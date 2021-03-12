@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.urls.base import reverse_lazy
 from .models import Author, Product, Series, Publisher, Genre
 from . import forms
-from django.views.generic import DetailView, ListView, DeleteView, CreateView, UpdateView
+from django.views.generic import DetailView, ListView, DeleteView, CreateView, UpdateView, TemplateView
 
 # Create your views here.
 def index(request):
@@ -15,6 +15,15 @@ def index(request):
 class IndexList(ListView):
     model=Product
 
+class HomePage(TemplateView):
+    model = Product
+    template_name = "references/homepage.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        products = self.model.objects.all().order_by('-pk')[0:9]
+        context['objects'] = products
+        return context
 
 def shop(request):
     products = Product.objects.all()
@@ -94,6 +103,8 @@ class ProductUpdate(UpdateView):
 class AuthorView(ListView):
     model=Author
     template_name_suffix='_list'
+    paginate_by = 2
+    queryset = Author.objects.all()
 
 class AuthorDetail(DetailView):
     model=Author
@@ -194,3 +205,6 @@ class SeriesUpdate(UpdateView):
     model=Series
     fields=('name_series','desc_series')
     template_name_suffix='_update_form'
+
+
+#class DashboardView():

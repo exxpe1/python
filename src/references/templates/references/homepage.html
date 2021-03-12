@@ -1,0 +1,27 @@
+{% extends 'references/base_1.html'%}
+
+<div id="carouselExampleControls" class="carousel slide carousel-dark" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      {% for object in objects %}
+        <div class="carousel-item {% if object == objects.0 %}active{% endif %}">
+          <div class="card mb-3 border-light text-dark container-fluid" style="max-width: 480px; text-align: center;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                {% if object.image.url %}
+                <a href="{% url 'product' object.pk %}"><img class="card-img-top" src="{{ object.image.url }}"></a>
+              {% else %}
+                <a href="{{object.id}}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              {% endif %}>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{ object.name }}</h5>
+                  <p class="card-text">{{ object.get_authors }}</p>
+                  <p class="card-text"><small class="text-muted"><a href="#" class="btn btn-success btn-sm text-bottom"><i class="bi bi-cart4"></i> В корзину</a></small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>

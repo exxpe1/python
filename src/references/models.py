@@ -61,6 +61,7 @@ class Genre(models.Model):
     name_genre = models.CharField(
         verbose_name ='Жанр',
         max_length=50)
+        
     desc_genre = models.TextField(
         verbose_name ='Краткая информация о Жанре',
         max_length=50,
@@ -104,13 +105,14 @@ class Product(models.Model):
         max_length=50,
         blank=True,
         null=True)
-    format = models.CharField(
+    format = models.ForeignKey(
+        'Formats',
+        on_delete=models.PROTECT,
         verbose_name ='Формат',
-        max_length=50,
-        blank=True,
         null=True)
-    isbn = models.IntegerField(
+    isbn = models.CharField(
         verbose_name ='ISBN',
+        max_length=50,
         blank=True,
         null=True)  
     weight = models.IntegerField(
@@ -151,3 +153,20 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Книга'
         verbose_name_plural = 'Книги'
+
+
+class Formats(models.Model):
+    name_format = models.CharField(
+        verbose_name ='Название формата',
+        max_length=80)
+    desc_format = models.TextField(
+        verbose_name ='Описание формата',
+        null=True,
+        blank = True)
+        
+    def __str__(self):
+        return self.name_format
+
+    class Meta:
+        verbose_name = 'Формат'
+        verbose_name_plural = 'Форматы'

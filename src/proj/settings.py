@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+from django.urls.base import reverse_lazy
 from pathlib import Path
 import os
 
@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'references',
     'crispy_forms',
-    'accounts'
+    'accounts',
+    'cart'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -133,4 +134,7 @@ STATICFILES_DIRS =(
     os.path.join(BASE_DIR, 'static'),
 )
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
+LOGIN_URL = reverse_lazy('login')
+LOGOUT_URL = reverse_lazy('logout')
+CART_SESSION_ID = 'cart'

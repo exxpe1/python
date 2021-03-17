@@ -21,11 +21,19 @@
       <h1 class="display-5 font-weight-normal">{{ object.name_product }}</h1>
       <h1 class="display-5 font-weight-normal">{{ object.price }} BYN</h1><br>
   </div>
+  <div class="col-md-8">
+    <p class="price">${{ product.price }}</p>
+    <form action="{% url 'cart:cart_add' product.id %}" method="post">
+        {{ cart_product_form }}
+        {% csrf_token %}
+        <input class="btn btn btn-success" type="submit" value="Добавить в корзину">
+    </form>
+  </div>
   <div class="row" >
-      <a class="btn btn btn-secondary" href="{% url 'catalog' %}">Обратно в магазин</a><br><br>
-      <a class="btn btn btn-success" href="{% url 'product-create' %}">Добавить товар</a>
-      <a class="btn btn btn-primary" href="{% url 'product-update' object.pk %}">Обновить товар</a><br><br>
-      <a class="btn btn btn-danger" href="{% url 'catalog-delete' object.pk %}">Удалить</a></div>
+      <!-- <a class="btn btn btn-secondary" href="{% url 'shop:catalog' %}">Обратно в магазин</a><br><br>
+      <a class="btn btn btn-success" href="{% url 'shop:product-create' %}">Добавить товар</a>
+      <a class="btn btn btn-primary" href="{% url 'shop:product-update' object.pk %}">Обновить товар</a><br><br>
+      <a class="btn btn btn-danger" href="{% url 'shop:catalog-delete' object.pk %}">Удалить</a></div> -->
       <div id="tabs-information" class="col-md-12">
         <div class="col-md-12 tabs-title">
         <div class="col-md-12 tabs-content">

@@ -14,6 +14,12 @@
       {% for elem in object.author.all %}
       <p class="lead font-weight-normal">{{ elem }}</p>
       {% endfor %}
+      <p class="price">${{ product.price }}</p>
+      <form action="{% url 'cart:cart_add' product.id %}" method="post">
+          {{ cart_product_form }}
+          {% csrf_token %}
+          <input type="submit" value="Add to cart">
+      </form>
       <a class="btn btn btn-secondary" href="{% url 'catalog' %}">Обратно в магазин</a><br><br>
       <a class="btn btn btn-success" href="{% url 'product-create' %}">Добавить товар</a>
       <a class="btn btn btn-primary" href="{% url 'product-update' object.pk %}">Обновить товар</a><br><br>

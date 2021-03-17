@@ -4,6 +4,8 @@ from django.urls import reverse
 from django.urls.base import reverse_lazy
 from .models import Author, Product, Series, Publisher, Genre
 from . import forms
+from cart.forms import CartAddProductForm
+from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView, ListView, DeleteView, CreateView, UpdateView, TemplateView
 
 # Create your views here.
@@ -208,3 +210,13 @@ class SeriesUpdate(UpdateView):
 
 
 #class DashboardView():
+
+from cart.forms import CartAddProductForm
+
+
+def product_detail(request, pk):
+    product = get_object_or_404(Product,
+                                pk=pk,
+                                available=True)
+    cart_product_form = CartAddProductForm()
+    return render(request, 'references/product_page.html', {'product': product, 'cart_product_form': cart_product_form})

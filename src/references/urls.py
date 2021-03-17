@@ -2,9 +2,10 @@ from django.urls import path, include
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import url
 from django.contrib import admin
-from accounts import urls as accounts_urls
-
+from accounts import urls 
+app_name = 'shop'
 urlpatterns = [
     path('', views.HomePage.as_view(), name='home'),
     path('catalog/', views.ProductView.as_view(), name='catalog'),
@@ -14,7 +15,7 @@ urlpatterns = [
     path('product-create/', views.ProductCreate.as_view(), name='product-create'),
     path('catalog-update/<int:pk>', views.ProductUpdate.as_view(), name='product-update'),
 
-    #path('accounts/', include(accounts_urls)),
+    path('accounts/', include('accounts.urls')),
     #path('dashboard/', include(account_urls)),
 
     path('author/', views.AuthorView.as_view(), name='author'),

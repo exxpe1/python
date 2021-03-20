@@ -1,2 +1,7 @@
-
-<h1> Welcome {{user}} </h1>
+<div class="list-group">
+    <a href="{% url 'shop:catalog' %}" class="list-group-item">Книги</a>
+    <a href="{% url 'shop:author' %}" class="list-group-item">Авторы</a>
+    <a href="{% url 'shop:publisher' %}" class="list-group-item">Издательства</a>
+    <a href="{% url 'shop:genre' %}" class="list-group-item">Жанры</a>
+    <a href="{% url 'shop:series' %}" class="list-group-item">Серии</a>
+  </div>

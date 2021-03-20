@@ -145,7 +145,8 @@ class Product(models.Model):
     image = models.ImageField(
         null=True,
         blank = True,
-        upload_to = 'image/'
+        upload_to = 'image/',
+        default='http://placehold.it/700x400'
     )
     def __str__(self):
         return self.name_product

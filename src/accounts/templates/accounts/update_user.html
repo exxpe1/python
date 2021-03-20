@@ -1,9 +1,12 @@
-{% extends "references\base.html" %}
+{% extends "base.html" %}
+
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Регистрация нового пользователя
+    Редактирование данных пользователя
 {% endblock title %}
+
+
 
 {% block content %}
 
@@ -11,12 +14,12 @@
 
     {% csrf_token %}
     {{ form|crispy }}
+    {{ form_ext|crispy }}
 
     <br>
 
-    <button type="submit" class="btn btn-success" style="width: 200px;">Регистрация</button>
+    <button type="submit" class="btn btn-success" style="width: 200px;">Сохранить</button>
     <button onclick="history.back()" class="btn btn-secondary" style="width: 200px;">Назад</button>
-    <input type="hidden" name="next" value="{{ next }}">
 
 </form>
 

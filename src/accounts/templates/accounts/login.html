@@ -1,24 +1,23 @@
-{% extends "base.html" %}
+{% extends "references\base.html" %}
+
 {% load crispy_forms_tags %}
 
-{% block title %}Log-in{% endblock %}
+{% block title %}
+    Авторизация
+{% endblock title %}
+
+
 {% block content %}
-    <h1>Log-in</h1>
-    {% if form.errors %}
-        <p>
-            Your username and password didn't match.
-            Please try again.
-        </p>
-    {% else %}
-        <p>Please, use the following form to log-in:</p>
-    {% endif %}
-    <div class="login-form">
-        <form action="{% url 'login' %}" method="post">
-            {{ form|crispy}}
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{{ next }}"/>
-            <p><input type="submit" value="Log-in"></p>
-        </form>
-        <p><a href="{% url 'password_reset' %}">Forgotten your password?</a></p>
+
+
+<form method="POST" action="{% url 'accounts:login' %}">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <div class="row justify-content-center">
+        <button class="btn btn-lg btn-primary btn-block" style="width: 200px;" type="submit">Войти</button>
+        <input type="hidden" name="next" value="{{ next }}">
     </div>
-{% endblock %}
+    
+
+  </form>
+{% endblock content %}

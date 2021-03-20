@@ -1,7 +1,17 @@
+from django.contrib.auth import forms as auth_forms, models as auth_models
 from django import forms
 from django.contrib.auth.models import User
+from . import models
 
 
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = auth_models.User
+        fields = ('first_name', 'last_name', 'email')
+class UserProfileExtForm(forms.ModelForm):
+    class Meta:
+        model = models.UserExtend
+        fields = ('phone', 'country', 'city', 'post_index', 'address1' ,'address2')
 
 class LoginForm(forms.Form):
     username = forms.CharField(

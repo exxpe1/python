@@ -5,17 +5,21 @@ from django.conf.urls.static import static
 from django.conf.urls import url
 from django.contrib import admin
 from accounts import urls 
+from orders import urls
+
 app_name = 'shop'
+
 urlpatterns = [
+    
     path('', views.HomePage.as_view(), name='home'),
     path('catalog/', views.ProductView.as_view(), name='catalog'),
-    #path('catalog/<int:pk>', views.product_page, name='product'),
-    path('catalog/<int:pk>', views.ProductDetail.as_view(), name='product'),
+    path('catalog/<int:id>', views.product_detail, name='product'),
+    #path('catalog/<int:pk>', views.ProductDetail.as_view(), name='product'),
     path('catalog-delete/<int:pk>', views.ProductDelete.as_view(), name='catalog-delete'),
     path('product-create/', views.ProductCreate.as_view(), name='product-create'),
     path('catalog-update/<int:pk>', views.ProductUpdate.as_view(), name='product-update'),
 
-    path('accounts/', include('accounts.urls')),
+    
     #path('dashboard/', include(account_urls)),
 
     path('author/', views.AuthorView.as_view(), name='author'),
@@ -41,6 +45,8 @@ urlpatterns = [
     path('series-delete/<int:pk>', views.SeriesDelete.as_view(), name='series-delete'),
     path('series-create/', views.SeriesCreate.as_view(), name='series-create'),
     path('series-update/<int:pk>', views.SeriesUpdate.as_view(), name='series-update'),
+
+    
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

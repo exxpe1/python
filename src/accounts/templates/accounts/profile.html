@@ -14,12 +14,7 @@
     <h1>Профиль</h1>
     <p>Добро пожаловать в наш магазин.</p>
     <span class="user">
-        {% if request.user.is_authenticated %}
-            Привет {{ user }},
-            <a href="{% url 'accounts:logout' %}">Выйти</a>
-        {% else %}
-            <a href="{% url 'accounts:login' %}">Войти</a>
-        {% endif %}
+        {{user}}}
     </span>
 </div>
 </div>

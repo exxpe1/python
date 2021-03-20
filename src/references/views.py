@@ -23,7 +23,7 @@ class HomePage(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        products = self.model.objects.all().order_by('-pk')[0:9]
+        products = self.model.objects.all().order_by('-pk')
         context['objects'] = products
         return context
 
@@ -211,12 +211,16 @@ class SeriesUpdate(UpdateView):
 
 #class DashboardView():
 
-from cart.forms import CartAddProductForm
 
 
-def product_detail(request, pk):
-    product = get_object_or_404(Product,
-                                pk=pk,
-                                available=True)
+#
+
+def product_detail(request, id):
+    product = get_object_or_404(Product, id=id)
     cart_product_form = CartAddProductForm()
-    return render(request, 'references/product_page.html', {'product': product, 'cart_product_form': cart_product_form})
+    context = {
+        'product': product,
+        'cart_product_form': cart_product_form
+    }
+    print(context)
+    return render(request, 'references/product_page.html', context)

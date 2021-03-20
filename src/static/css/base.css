@@ -1,0 +1,31 @@
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.delete__link:hover {
+    color: red;
+}
+.td-cart {
+    vertical-align: middle !important;
+}
+.card-body {
+    text-align: center !important;
+}
+
+.price {
+    color: rgb(85, 85, 85);
+    /* color: #23b4ca; */
+    font-size: 16px;
+    line-height: 1.2;
+    /* line-height: 18px; */
+    display: inline-block;
+    font-weight: bold;}
+
+li {
+    list-style-type: none;
+    }
